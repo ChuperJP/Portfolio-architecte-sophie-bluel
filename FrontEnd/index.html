@@ -9,15 +9,17 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/ae53684c76.js" crossorigin="anonymous"></script>
+	<script src="./assets/JavaScript/script.js" defer></script>
 </head>
 <body>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
+			<a href="#portfolio"><li>projets</li></a>
+			<a href="#contact"><li>contact</li></a>
+			<a href="./loginPage/login.html"><li>login</li></a>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -36,8 +38,14 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
+		<nav>
+			<bouton value="Tous"  class="btn_filter"><p>Tous</p></bouton>
+			<bouton value="Objets"  class="btn_filter"><p>Objets</p></bouton>
+			<bouton value="Appartements"  class="btn_filter"><p>Appartements</p></bouton>
+			<bouton value="Hotels & restaurants"  class="btn_filter"><p>Hôtels & restaurants</p></bouton>
+		</nav>
 		<div class="gallery">
-			<figure>
+			<!--<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
 				<figcaption>Abajour Tahina</figcaption>
 			</figure>
@@ -80,7 +88,7 @@
 			<figure>
 				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
 				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure>
+			</figure>-->
 		</div>
 	</section>
 	<section id="contact">
