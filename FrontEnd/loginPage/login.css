@@ -100,6 +100,11 @@ margin: auto;
 	flex-direction: column;
 }
 
+.alertMessage {
+	color: red;
+	margin-bottom: 14px;
+}
+
 #login input {
 	height: 50px;
 	font-size: 1.2em;
