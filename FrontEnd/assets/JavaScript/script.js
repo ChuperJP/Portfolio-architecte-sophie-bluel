@@ -1,7 +1,4 @@
 /////////////RECUPERATION DES PROJETS/////////////
-let projects = []
-let projectsFiltered = []
-
 const projetsApi = fetch('http://localhost:5678/api/works')
   .then(function (response) {
     if (response.ok) {
@@ -11,26 +8,30 @@ const projetsApi = fetch('http://localhost:5678/api/works')
   })
   .then(function (data) {
     console.log(data)
-    afficherProjects(data)
     projects = data
     projectsFiltered = data
+    /**********Affiche projets page index**********/
+    afficherProjects()
+    /**********afficher projets modal**********/
+    afficherModalProjects()
   })
 /*.catch(function(err) {
   // Affiche une erreur est survenue
   return alert("une erreur est survenue.")
 });*/
 
-
 /////////////AFFICHAGE DES PROJETS/////////////
+
+/**********projets page index**********/
 const gallery = document.querySelector(".gallery")
 const figure = document.getElementsByTagName("figure")
 
+function afficherProjects() {
 
-function afficherProjects(projects) {
   //supprime les travaux avant d'afficher ceux selectionner, evite les doublons//
   document.querySelector(".gallery").innerHTML = ''
 
-  for (let project of projects) {
+  for (let project of projectsFiltered) {
     let figure = document.createElement("figure");
     gallery.appendChild(figure)
 
@@ -46,6 +47,7 @@ function afficherProjects(projects) {
 
   }
 }
+
 
 
 /////////////MENU DE SELECTION DES PROJETS/////////////
@@ -65,15 +67,16 @@ for (const btn of btn_filters) {
 
     if (getValue === "Tous") {
       projectsFiltered = projects
+    
     }
     else {
       projectsFiltered = projects.filter(function (projet) {
         return projet.category.name === getValue;
       })
-
+     
     }
-    afficherProjects(projectsFiltered)
-
+    afficherProjects()
+    //console.log(projects)
     console.log(projectsFiltered)
   })
 
@@ -81,8 +84,8 @@ for (const btn of btn_filters) {
 }
 
 
-/*const result = projectsFiltered.filter(function(projet) {   
-  return projet.category.name === getValue;
-})*/
+
+
+
 
 

@@ -53,7 +53,7 @@ connexion.addEventListener("click", (e) => {
 function errorMessage() {
   const alertMessage = `<p class="alertMessage" >Le nom d'utilisateur ou le mot de passe est incorrect.</p>`;
   email.insertAdjacentHTML("beforebegin", alertMessage)
-  //alert("Le nom d'utilisateur ou le mot de passe de l'utilisateur est incorrect."); /*displays error message*/
+ /*displays error message*/
 
 }
 
@@ -66,6 +66,3 @@ function tokenRegister(data) {
 
 
 
-//// bouton modifier/////////
-
-//<p><i class="fa-regular fa-pen-to-square"></i> Modifier </p>
