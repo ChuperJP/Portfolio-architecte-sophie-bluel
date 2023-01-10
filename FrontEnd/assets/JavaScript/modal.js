@@ -36,23 +36,14 @@ function afficherModalProjects() {
         figure.appendChild(positionBtn)
 
 
-        deleteBtn.addEventListener("click", (e) => {
-            //e.preventDefault()
+        deleteBtn.addEventListener("click", async (e) => {
             /**********les fonction suivante sont dans deleteProjects.js**********/
-            
+
             getItemId = e.target.closest(".figure").getAttribute("id")
-            //closest('div.Myclass')
             if (confirm("êtes-vous sûr de vouloir supprimer l'élément " + getItemId) === true) {
-                deleteOneProject(getItemId)
+               await deleteOneProject(getItemId)
 
-                console.log(getItemId)
-                //project1 = projects.filter(function (projet) {
-                //    return projet !== projet.getItemId;
-              //  })
-                //project => project.id !== getItemId
-                //console.log(project1)
             }
-
 
         })
 
@@ -148,7 +139,7 @@ for (const modalContainer of modalContainers) {
 /********** ferme modal sur la croix**********/
 for (const closeXmark of closeXmarks) {
     closeXmark.addEventListener("click", (e) => {
-        //e.stopPropagation()
+        e.stopPropagation()
         closeModal()
     })
 }

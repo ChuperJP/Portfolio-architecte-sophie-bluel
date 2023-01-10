@@ -3,37 +3,30 @@ const addTitle = document.querySelector(".modal_add_form #add_project_title")
 const addCategorie = document.querySelector(".modal_add_form #add_project_cat")
 const addProjectValid = document.querySelector(".modal_add_form input[type='submit']")
 
-const modal_add_form = document.querySelector(".modal_add_form")
+console.log(addImage.validity.valueMissing)
 
 
 
 addProjectValid.addEventListener("click", (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    
+    e.stopPropagation()
+    const modal_add_form = document.querySelector(".modal_add_form")
+    const formData = new FormData(modal_add_form);
+
+    const addImage = document.querySelector(".modal_add_form #add_project_image")
+
     formData.append("image", addImage.files[0]);
-    formData.append("title", addTitle.value);
-    formData.append("category", addCategorie.value);
-    console.log(formData)
-
-    //const searchParams = new URLSearchParams(formData)
-   // console.log(searchParams)
-
+    
+    if ( (addImage.validity.valueMissing === false) && ( addTitle.validity.valueMissing === false) && ( addCategorie.validity.valueMissing === false) ) {
     fetch("http://localhost:5678/api/works", {
         method: 'POST',
         headers: {
             'accept': 'application/json',
             'Authorization': "Bearer " + localStorage.getItem("token"),
-            'Content-Type': 'multipart/form-data',
+            
         },
-        body: formData
-        
-        
-        /*JSON.stringify({
-            "image": formData,
-            "title": addTitle.value,
-            "category": addCategorie.value,
-        }),*/
+        body: formData,
+
     })
         .then(function (response) {
             if (response.ok) {
@@ -42,18 +35,19 @@ addProjectValid.addEventListener("click", (e) => {
             }
         })
         .then(function (data) {
-            //console.log(data)
-
+           
+            projects.push(data)          
+            
             /**********Affiche projets page index actualisé**********/
             afficherProjects()
             /**********afficher projets modal actualisé**********/
             afficherModalProjects()
 
     })
-    /*.catch(function(err) {
-      // Affiche une erreur est survenue
-      return alert("une erreur est survenue.")
-    });*/
+}
+else {
+    return alert("Vous devez remplir tous les champs avant de valider.")
+}
 
 })
 
@@ -62,42 +56,47 @@ addProjectValid.addEventListener("click", (e) => {
 
 addImage.addEventListener("change", (e) => {
     afficherInputImage(e)
-    addProjectValid.style.background = "#1D6154"
+    changeColorInput()
 })
-
-
+addTitle.addEventListener("change", (e) => {
+    changeColorInput()
+})
 addCategorie.addEventListener("change", (e) => {
-    console.log(addCategorie.value)
+    changeColorInput()
 })
+
 
 function afficherInputImage(e) {
-    const divSvg = document.querySelector(".modal_add_form .input_add_photo")
+    const btnContainer = document.querySelector(".modal_add_form .input_add_photo_bouton_container")
+    const p = document.querySelector(".modal_add_form .input_add_photo p")
+    /////cache l'input image//////
+    btnContainer.style.visibility = "hidden"
+    p.style.visibility = "hidden"
+    
 
-    divSvg.innerHTML = ''
-
-    let image = document.createElement("img")
+    //////Affiche l'image chargé//////
+    let image = document.querySelector(".modal_add_form .input_add_photo .uploadedImage")
+    image.style.display = "flex"
     image.setAttribute("src", URL.createObjectURL(e.target.files[0]))
-    image.setAttribute("class", "uploadedImage")
     image.setAttribute("crossorigin", "anonymous")
-    divSvg.appendChild(image)
+    
 }
 
 /**********changement de couleur du bouton add image submit**********/
 
 
-//changeColorInput()
+changeColorInput()
 
 
 
 function changeColorInput() {
 
-    if (addImage.files === null && addTitle.value === undefined) {
-        addProjectValid.style.background = "#A7A7A7"
+    if ( (addImage.validity.valueMissing === false) && ( addTitle.validity.valueMissing === false) && ( addCategorie.validity.valueMissing === false) ) {
+        addProjectValid.style.background = "#1D6154"
     }
     else {
-        addProjectValid.style.background = "#1D6154"
+        addProjectValid.style.background = "#A7A7A7"
     }
 
 }
-//(addImage.value === null || addImage.value === "")
-/*|| (addTitle.value === null) || (addCategorie.value === null)) */
+

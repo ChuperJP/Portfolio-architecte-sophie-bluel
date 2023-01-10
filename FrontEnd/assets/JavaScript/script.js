@@ -31,6 +31,28 @@ function afficherProjects() {
   //supprime les travaux avant d'afficher ceux selectionner, evite les doublons//
   document.querySelector(".gallery").innerHTML = ''
 
+  for (let project of projects) {
+    let figure = document.createElement("figure");
+    gallery.appendChild(figure)
+
+    let image = document.createElement("img")
+    image.setAttribute("src", project.imageUrl)
+    image.setAttribute("alt", project.title)
+    image.setAttribute("crossorigin", "anonymous")
+    figure.appendChild(image)
+
+    let figcap = document.createElement("figcaption");
+    figcap.innerText = project.title
+    figure.appendChild(figcap)
+
+  }
+}
+
+function afficherProjectsFiltered() {
+
+  //supprime les travaux avant d'afficher ceux selectionner, evite les doublons//
+  document.querySelector(".gallery").innerHTML = ''
+
   for (let project of projectsFiltered) {
     let figure = document.createElement("figure");
     gallery.appendChild(figure)
@@ -75,8 +97,7 @@ for (const btn of btn_filters) {
       })
      
     }
-    afficherProjects()
-    //console.log(projects)
+    afficherProjectsFiltered()
     console.log(projectsFiltered)
   })
 

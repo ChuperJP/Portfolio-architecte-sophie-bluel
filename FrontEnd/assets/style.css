@@ -305,6 +305,7 @@ body {
 }
 
 #modal_ajout-photo .input_add_photo{
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -317,6 +318,8 @@ body {
 }
 
 #modal_ajout-photo .input_add_photo .uploadedImage {
+	position: absolute;
+	display: none;
 	height: 100%;
 }
 

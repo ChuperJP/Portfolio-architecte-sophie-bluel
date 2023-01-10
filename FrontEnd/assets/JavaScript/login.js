@@ -1,8 +1,3 @@
-// redirige vers la page index
-//window.location.href = "http://127.0.0.1:5500/FrontEnd/index.html"
-/*window.open(
-  "http://127.0.0.1:5500/FrontEnd/index.html"
-);*/
 
 const email = document.querySelector("form input[type='email']")
 const password = document.querySelector("form input[type='password']")
@@ -37,7 +32,7 @@ connexion.addEventListener("click", (e) => {
         errorMessage();
       } else {
         tokenRegister(data)
-        window.location.href = "http://127.0.0.1:5500/FrontEnd/index.html"
+        window.location.href = "../index.html"
          /*opens the target page while Id & password matches*/
       }
 
