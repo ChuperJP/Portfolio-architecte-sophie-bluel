@@ -3,9 +3,6 @@ const addTitle = document.querySelector(".modal_add_form #add_project_title")
 const addCategorie = document.querySelector(".modal_add_form #add_project_cat")
 const addProjectValid = document.querySelector(".modal_add_form input[type='submit']")
 
-console.log(addImage.validity.valueMissing)
-
-
 
 addProjectValid.addEventListener("click", (e) => {
     e.preventDefault();
