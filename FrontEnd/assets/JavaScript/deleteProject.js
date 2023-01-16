@@ -19,6 +19,7 @@ async function deleteOneProject(getItemId) {
         afficherModalProjects()
 
     }
+    
 }
 
 
