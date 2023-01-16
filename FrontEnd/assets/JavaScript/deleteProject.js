@@ -1,6 +1,7 @@
 
 async function deleteOneProject(getItemId) {
 
+    try {
     if (isConnected() === true) {
         await fetch('http://localhost:5678/api/works/' + getItemId, {
             method: 'DELETE',
@@ -18,6 +19,9 @@ async function deleteOneProject(getItemId) {
         afficherProjects()
         afficherModalProjects()
 
+    }}
+    catch{
+        alert("une erreur est survenue.")
     }
     
 }
