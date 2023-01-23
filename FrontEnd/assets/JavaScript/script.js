@@ -2,12 +2,12 @@
 const projetsApi = fetch('http://localhost:5678/api/works')
   .then(function (response) {
     if (response.ok) {
-      console.log(response)
+      //console.log(response)
       return response.json();
     }
   })
   .then(function (data) {
-    console.log(data)
+    //console.log(data)
     projects = data
     projectsFiltered = data
     /**********Affiche projets page index**********/
@@ -98,7 +98,7 @@ for (const btn of btn_filters) {
      
     }
     afficherProjectsFiltered()
-    console.log(projectsFiltered)
+    //console.log(projectsFiltered)
   })
 
 

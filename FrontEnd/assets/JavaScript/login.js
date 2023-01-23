@@ -6,8 +6,8 @@ const connexion = document.querySelector("form input[type='submit']")
 
 connexion.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log(email.value);
-  console.log(password.value);
+  //console.log(email.value);
+  //console.log(password.value);
 
   fetch("http://localhost:5678/api/users/login", {
     method: 'POST',
@@ -22,12 +22,12 @@ connexion.addEventListener("click", (e) => {
   })
     .then(function (response) {
       if (response.ok) {
-        console.log(response)
+        //console.log(response)
         return response.json();
       }
     })
     .then(function (data) {
-      console.log(data)
+      //console.log(data)
       if (data == undefined) {
         errorMessage();
       } else {

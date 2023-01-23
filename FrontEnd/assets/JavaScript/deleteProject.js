@@ -11,7 +11,7 @@ async function deleteOneProject(getItemId) {
             },
         })
         
-        console.log(Number(getItemId))
+        //console.log(Number(getItemId))
         projects = projects.filter(function (projet) {
             return projet.id !== Number(getItemId);
         })
